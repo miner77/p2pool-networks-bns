@@ -65,6 +65,7 @@ nets = dict(
         VERSION_CHECK=lambda v: True,
         VERSION_WARNING=lambda v: 'Upgrade Litecoin to >=0.8.5.1!' if v < 80501 else None,
     ),
+
     litecoin_testnet=math.Object(
         PARENT=networks.nets['litecoin_testnet'],
         SHARE_PERIOD=4, # seconds
@@ -83,6 +84,29 @@ nets = dict(
         ANNOUNCE_CHANNEL='#p2pool-alt',
         VERSION_CHECK=lambda v: True,
     ),
+
+
+bonuscoin=math.Object( #OK
+        PARENT=networks.nets['bonuscoin'], #OK
+        SHARE_PERIOD=10, # seconds #OK
+        CHAIN_LENGTH=24*60*60//10, # shares #OK
+        REAL_CHAIN_LENGTH=24*60*60//10, # shares #OK
+        TARGET_LOOKBEHIND=200, # shares #OK
+        SPREAD=15, # blocks #OK
+        IDENTIFIER='76d3f6dce9c83b1d'.decode('hex'), #OK
+        PREFIX='68420a6e16cacd84'.decode('hex'), #OK
+        P2P_PORT=65000, #OK
+        MIN_TARGET=0,#?
+        MAX_TARGET=2**256//2**32 - 1, #?
+        PERSIST=True,
+        WORKER_PORT=65001, #OK
+        BOOTSTRAP_ADDRS='bonuscoin.net 67.231.54.19 148.251.12.124'.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool',
+        VERSION_CHECK=lambda v: 50700 <= v < 60000 or 60010 <= v < 60100 or 60400 <= v,
+        VERSION_WARNING=lambda v: 'Upgrade Bitcoin to >=0.8.5!' if v < 80500 else None,
+        
+    ),
+
 
     terracoin=math.Object(
         PARENT=networks.nets['terracoin'],
