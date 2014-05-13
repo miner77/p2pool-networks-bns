@@ -27,8 +27,7 @@ bonuscoin=math.Object(
         WORKER_PORT=55001, 
         BOOTSTRAP_ADDRS='bonuscoin.net 67.231.54.19 148.251.12.124'.split(' '),
         ANNOUNCE_CHANNEL='#p2pool',
-        VERSION_CHECK=lambda v: 50700 <= v < 60000 or 60010 <= v < 60100 or 60400 <= v,
-        VERSION_WARNING=lambda v: 'Upgrade Bitcoin to >=0.8.5!' if v < 80500 else None,
+        VERSION_CHECK=lambda v: True
         
     )
 
